@@ -25,20 +25,16 @@ Number = Union[int, float]
         "add_negative_float_and_positive_float",
     ]
 )
-def test_addition(a: Number, b:Number, excpected: Number) -> None:
+def test_addition(a: Number, b: Number, expected: Number) -> None:
     result = Operations.addition(a, b)
-
-    assert result == expected, f"Expected addition({a}, {b}) to be {expected}, but got {results}"
-
-
-@pytest.mark.parametrize
-
+    assert result == expected, f"Expected addition({a}, {b}) to be {expected}, but got {result}"
+    
 # ---------------------------------------------
 # Unit Tests for the 'subtraction' Method
 # ---------------------------------------------
 
 @pytest.mark.parametrize(
-    "a, b, excpected",
+    "a, b, expected",
     [
         (5, 3, 2),
         (0, 0, 0),
@@ -47,18 +43,16 @@ def test_addition(a: Number, b:Number, excpected: Number) -> None:
         (-10.5, -5.5, -5.0),
     ],
     ids=[
-        "subtract_two_positive_inters",
+        "subtract_smaller_positive_integer_from_larger",
         "subtract_two_zeros",
-        "subtract_negative_from negative_integer",
+        "subtract_negative_integer_from_negative_integer",
         "subtract_two_positive_floats",
         "subtract_two_negative_floats",
     ]
 )
 def test_subtraction(a: Number, b: Number, expected: Number) -> None:
-    result = Operations.subtraction(a, b)
-
-    assert result == expected, f"Expected subtraction({a}, {b}) to be {expected}, but got {results}"
-
+    result = Operations().subtraction(a, b)
+    assert result == expected, f"Expected subtraction({a}, {b}) to be {expected}, but got {result}"
 
 # ---------------------------------------------
 # Unit Tests for the 'multiplication' Method
@@ -82,9 +76,8 @@ def test_subtraction(a: Number, b: Number, expected: Number) -> None:
     ]
 )
 
-def test_multiplication(a: Number, b:Nummber, expected: Number) -> Number:
+def test_multiplication(a: Number, b: Number, expected: Number) -> None:
      result = Operations.multiplication(a, b)
-
      assert result == expected, f"Expected multiplication({a}, {b}) to be {expected}, but got {result}"
 
 
@@ -111,7 +104,7 @@ def test_multiplication(a: Number, b:Nummber, expected: Number) -> Number:
 )
 def test_division(a: Number, b: Number, expected: float) -> None:
 
-    result = Operations.divisoin(a, b)
+    result = Operations.division(a, b)
     assert result == expected, f"Expected division({a}, {b}) to be {expected}, but got {result}"
 
 # ---------------------------------------------
@@ -132,7 +125,7 @@ def test_division(a: Number, b: Number, expected: float) -> None:
     ]
 )
 
-def test_division_by_zero(a: Number, b: Number) -> None
+def test_division_by_zero(a: Number, b: Number) -> None:
 
     with pytest.raises(ValueError, match="Division by zero is not allowed") as execinfo:
         Operations.division(a, b)
