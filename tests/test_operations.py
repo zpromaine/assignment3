@@ -45,7 +45,7 @@ def test_addition(a: Number, b:Number, excpected: Number) -> None:
         (-5, -3, -2),
         (10.5, 5.5, 5.0),
         (-10.5, -5.5, -5.0),
-    ]
+    ],
     ids=[
         "subtract_two_positive_inters",
         "subtract_two_zeros",
@@ -86,4 +86,57 @@ def test_multiplication(a: Number, b:Nummber, expected: Number) -> Number:
      result = Operations.multiplication(a, b)
 
      assert result == expected, f"Expected multiplication({a}, {b}) to be {expected}, but got {result}"
-     
+
+
+# ---------------------------------------------
+# Unit Tests for the 'division' Method
+# ---------------------------------------------
+
+@pytest.mark.parametrize(
+    "a, b, expected",
+    [
+        (6, 3, 2.0),         
+        (-6, -3, 2.0),       
+        (6.0, 3.0, 2.0),     
+        (-6.0, 3.0, -2.0),   
+        (0, 5, 0.0),         
+    ],
+    ids=[
+        "divide_two_positive_integers",
+        "divide_two_negative_integers",
+        "divide_two_positive_floats",
+        "divide_negative_float_by_positive_float",
+        "divide_zero_by_positive_integer",
+    ]
+)
+def test_division(a: Number, b: Number, expected: float) -> None:
+
+    result = Operations.divisoin(a, b)
+    assert result == expected, f"Expected division({a}, {b}) to be {expected}, but got {result}"
+
+# ---------------------------------------------
+# Negative Test Case: Division by Zero
+# ---------------------------------------------
+
+@pytest.mark.parametrize(
+    "a, b",
+    [
+        (1, 0),  
+        (-1, 0), 
+        (0, 0), 
+    ],
+    ids=[
+        "divide_positive_dividend_by_zero",
+        "divide_negative_dividend_by_zero",
+        "divide_zero_by_zero",
+    ]
+)
+
+def test_division_by_zero(a: Number, b: Number) -> None
+
+    with pytest.raises(ValueError, match="Division by zero is not allowed") as execinfo:
+        Operations.division(a, b)
+    
+    assert "Division by zero is not allowed." in str(execinfo.value), \
+        f"Expected error message 'Division by zero is not allowed.', but got '{excinfo.value}'"
+    
