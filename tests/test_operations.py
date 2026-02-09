@@ -55,6 +55,35 @@ def test_addition(a: Number, b:Number, excpected: Number) -> None:
     ]
 )
 def test_subtraction(a: Number, b: Number, expected: Number) -> None:
-      result = Operations.subtraction(a, b)
+    result = Operations.subtraction(a, b)
 
     assert result == expected, f"Expected subtraction({a}, {b}) to be {expected}, but got {results}"
+
+
+# ---------------------------------------------
+# Unit Tests for the 'multiplication' Method
+# ---------------------------------------------
+
+@pytest.mark.parametrize(
+    "a, b, expected",
+    [
+        (2, 3, 6),          
+        (0, 10, 0),         
+        (-2, -3, 6),       
+        (2.5, 4.0, 10.0),  
+        (-2.5, 4.0, -10.0),
+    ],
+    ids=[
+        "multiply_two_positive_integers",
+        "multiply_zero_with_positive_integer",
+        "multiply_two_negative_integers",
+        "multiply_two_positive_floats",
+        "multiply_negative_float_with_positive_float",
+    ]
+)
+
+def test_multiplication(a: Number, b:Nummber, expected: Number) -> Number:
+     result = Operations.multiplication(a, b)
+
+     assert result == expected, f"Expected multiplication({a}, {b}) to be {expected}, but got {result}"
+     
